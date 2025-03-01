@@ -1,0 +1,73 @@
+\documentclass[fontset=none]{ctexart}
+\ctexset{fontset=windows}   %指定字体库为windows
+\usepackage{fancyhdr}
+\setlength{\headheight}{13pt}  % 调整页眉高度
+\usepackage{float}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{subfigure}
+\pagestyle{fancy}
+\fancyhf{} % 清空默认页眉页脚
+\fancyhead[L]{QQ：17950026}
+\fancyhead[R]{作者：姜鱼}
+\fancyhead[C]{兼听则明，偏听则暗}
+
+\usepackage{lmodern}
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{flushleft} % 整体左对齐
+    {\huge\bfseries \@title \par} % 标题
+    \vspace{0.5em}
+    {\large \bfseries \textit{作者：} \@author \par} % 作者（添加自定义文字）
+    \vspace{0.5em}
+    {\bfseries 发布日期：\@date} % 日期（调整格式）
+  \end{flushleft}
+  \thispagestyle{empty} % 可选：隐藏页眉页脚
+  \vspace{1cm} % 标题块后间距
+}
+\makeatother
+
+\begin{document}
+
+    \title{一种用分母结构转化分子的思路}
+    \author{姜鱼}
+    \date{\today}
+    \maketitle
+    \songti
+    
+    注意到一个等式变换：$$\frac{x}{x+3}=1-\frac{3}{x+3}$$
+    
+    原来的函数中，分子和分母处各有一个可变量$x$，通常处理这种函数的时候，这会使分析更加复杂。我们只希望变量出现在分母处，而使分子变为更加简单的常数$3$，这样的结构变换大大地简化了我们的分析难度。
+
+    仔细看变换的本质原理，关键在这个“1”处。我们将这个1视为分式$\frac{1}{1}$，继而让分子分母同时乘上$x+3$，这样就可以使分母的结构转移到分子上：
+    
+    $$
+    1-\frac{3}{x+3}=\frac{x+3}{x+3}-\frac{3}{x+3}
+    $$
+
+    分母的部分分为“$x$”和“3”，我们要保留$x$而去掉3的部分，于是有了这个等式。生动形象的来说，我们的分母有$x+3$，而分子从$x$置换成了3。显然如果分子是3，我们也可以如此一般置换为$x$。
+
+    我们将其比喻为一个「置换反应」。
+
+    接下来分母更加复杂，但是我们依然可以利用类似的思路去置换我们想要的部分。例如：$$\frac{x}{\left( x+3 \right) \left( x+4 \right)}=\frac{1}{x+4}-\frac{3}{\left( x+3 \right) \left( x+4 \right)}=\frac{x+3}{\left( x+4 \right) \left( x+3 \right)}-\frac{3}{\left( x+3 \right) \left( x+4 \right)}$$
+
+    这个时候我们会发现，需要分式上下同乘$x+3$的部分不再是1，而是分式$\frac{1}{x+4}$，结构或许变得复杂了，但是思路其实还是如法炮制。依然是利用分母中同时包含变量x和常数的特性，将分子的变量成分置换为常数。当然，对象有所转变，形式有所复杂，但是手段是不变的。甚至如果我们的目标是置换另一个变量y，也可以实现。例如：$$\frac{x}{\left( x+y \right) \left( x+y+1 \right)}=\frac{1}{x+y+1}-\frac{y}{\left( x+y \right) \left( x+y+1 \right)}$$或者$$\frac{x}{\left( x+y \right) \left( x+y+1 \right)}=\frac{1}{x+y}-\frac{y+1}{\left( x+y \right) \left( x+y+1 \right)}$$思路上是一致的。
+
+    当然，其实有更简单的手法，就是把复杂因式变成熟悉的样子，比如这样看待：
+
+    $$
+    \frac{x}{\left( x+k \right) \left( x+k+1 \right)}=\frac{x}{\left( x+k \right)}\cdot \frac{1}{\left( x+k+1 \right)}=\left[ 1-\frac{k}{x+k} \right] \cdot \frac{1}{\left( x+k+1 \right)}=\frac{1}{\left( x+k+1 \right)}-\frac{k}{\left( x+k \right) \left( x+k+1 \right)}
+    $$
+
+    从分母中置换分子的思路可以帮我们处理很多麻烦。在需要的时候把当前不想要的分子结构，置换为分母中包含的其他我们更愿意见到的结构，可以使我们的解题思路更开阔。
+
+
+
+
+
+
+
+
+\end{document}
