@@ -1,0 +1,53 @@
+\documentclass[fontset=none]{ctexart}
+\ctexset{fontset=windows}   %指定字体库为windows
+\usepackage{fancyhdr}
+\setlength{\headheight}{13pt}  % 调整页眉高度
+\usepackage{float}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{subfigure}
+\pagestyle{fancy}
+\fancyhf{} % 清空默认页眉页脚
+\fancyhead[L]{QQ：17950026}
+\fancyhead[R]{作者：姜鱼}
+\fancyhead[C]{兼听则明，偏听则暗}
+
+\usepackage{lmodern}
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{flushleft} % 整体左对齐
+    {\huge\bfseries \@title \par} % 标题
+    \vspace{0.5em}
+    {\large \bfseries \textit{作者：} \@author \par} % 作者（添加自定义文字）
+    \vspace{0.5em}
+    {\large\bfseries \textit{日期：}\@date} % 日期（调整格式）
+  \end{flushleft}
+  \thispagestyle{empty} % 可选：隐藏页眉页脚
+  \vspace{1cm} % 标题块后间距
+}
+\makeatother
+
+\begin{document}
+\title{期望的定义}
+\author{姜鱼}
+\date{\today}
+\maketitle
+\songti
+
+对于离散型随机变量$$E\left[ X \right] =\sum_x^{}{xP\left\{ X=x \right\}}$$
+
+我们定义它的期望，类似于均值，是这组数据中能得到的平均结果。但是不同于直接取均值的理念，我们从期望的角度，用性质为其定义：如果一处变量在整体中的占比（或者说概率）越大，那么期望就更有可能落在这个数上；此外，概率相同的多个变量在，我们再考虑从变量本身的大小出发，取其均值，定义期望落在这个均值上。
+
+基于这样的思路，我们最终定义了以$x × P$为单元再对其求和的计算方法。实际上可以理解为加权，以\underline{变量的数值}加权\underline{变量的占比}。
+
+离散变量的概率，是对每处的变量值考察其概率。概率学依赖于集合，所以我们永远可以视其为某一部分集合$A$在另一部分集合$B$中的占比，个体之于整体。所以过渡到连续变量，则是对一段变量出现的区间考察其概率，相当于范围之于整体。
+
+所以概率需要积分：$$P\left\{ a\leqslant x\leqslant b \right\} =\int_a^b{p\left( x \right) dx}$$
+
+所以需要用一段区间中每处变量为其概率的加权：$$E\left[ x \right] =\int_a^b{xp\left( x \right) dx}$$
+
+当然，乘法是有交换律的，我们也可以反向思考由概率为变量加权进行求和或者积分，殊途同归。
+
+\end{document}
